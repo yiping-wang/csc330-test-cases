@@ -217,6 +217,24 @@ fun test_lists_2() =
     ()
   end
 
+(* Greay *)
+fun greay_tests() =
+    let
+        fun addFive(a) = a + 5
+        val s0 = EmptySet Int.compare
+        val l0 = EmptySet comp_list_int
+        val s1 = s0 ++ 2 ++ 5 ++ 4 ++ 1 ++ 4
+        val s2 = s0 ++ 0 ++ ~1 ++ 1 ++ 5 ++ ~5 ++ 5 ++ ~2
+        val l1 = l0 ++ [1,2,3] ++ [2,3,4] ++ [] ++ [1,2] ++ [5] -- []
+        val l2 = l0 ++ [1,2,3] ++ [2,3,4] ++ [] ++ [1,2] ++ [5] ++ []
+        val _ = test(map_set(s1, Int.compare, addFive) IDENTICAL list_to_set ([6,7,9,10], Int.compare), "testing mapped set")
+        val _ = test(map_set(s1, Int.compare, addFive) IDENTICAL list_to_set ([6,7,9,10], Int.compare), "testing insert list & remove list with emptylist")
+        val _ = test(str_set(l1, str_list_int) = "{[1,2]:[1,2,3]:[2,3,4]:[5]}",  "testing remove list with emptylist")
+        val _ = test(str_set(l2, str_list_int) = "{[]:[1,2]:[1,2,3]:[2,3,4]:[5]}",  "testing insert list with with duplicate emptylist")
+        val _ = test(str_set(s2, Int.toString) = "{~5:~2:~1:0:1:5}",  "testing insert with negative ints")
+    in ()
+    end
+
 
 fun main (prog_name, args) =
     let
@@ -233,6 +251,7 @@ fun main (prog_name, args) =
       val _ = test_set_ops_2()
       val _ = test_conversions_2()
       val _ = test_lists_2()
+      val _ = greay_tests()
     in
       print("Finished testing\n"); exit()
     end
