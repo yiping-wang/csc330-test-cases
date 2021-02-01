@@ -238,10 +238,12 @@ fun greay_tests() =
 
 
 val tests = [
-  ("test_empty()", test_empty),
-  ("test_set_int", test_set_int),
-  ("kush test", test_lists_2)
-   ]
+  ("extra yiping test conversions 2", test_conversions_2),
+  ("extra yiping test set ops 2", test_set_ops_2),
+  ("extra yiping test set int 2", test_set_int_2),
+  ("extra kush test", test_lists_2),
+  ("extra greay tests", greay_tests)
+  ]
 
 fun run_tests testLst =
     let
@@ -267,11 +269,6 @@ fun main (prog_name, args) =
       val _ = test_lists()
       val _ = test_lists_strings()
       (* extra *)
-      val _ = test_set_int_2()
-      val _ = test_set_ops_2()
-      val _ = test_conversions_2()
-      val _ = test_lists_2()
-      val _ = greay_tests()
       val _ = run_tests(tests); 
     in
       print("Finished testing\n");
