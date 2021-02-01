@@ -204,18 +204,22 @@ fun test_lists_2() =
     val s7 = ["another", "list"]
     val s8 = ["hi", "and", ""]
     val s9 = s2 ++ s8 ++ s7
-    val s10 = s2 ++ s5 ++ s6
+    val s10 = s2 ++ s5 ++ s6 ++ s7
     val s11 = EmptySet Int.compare
     val s12 = s11 ++ 1 ++ 2 ++ 44 ++ 99 ++ 3
     val s13 = EmptySet String.compare
     val s14 = s13 ++ "1" ++ "2" ++ "44" ++ "99" ++ "3"
-    val _ = test(s9 EXCEPT s10 IDENTICAL s9, "Testing String_List Sets: [Except, Identical]")
+    val _ = test( (s9 EXCEPT s10) IDENTICAL s9--s7, "Testing String_List Sets: [Except, Identical]")
     val _ = test(s6 IN s10, "Testing String_List Sets: [Subset]")
     val _ = test(str_set(s3, str_list_int) = "{[1,2]:[4,5]:[5,6]}", "Testing Int_List Sets: [String-Set]")
     val _ = test(Set([str_set(map_set(s12, String.compare, Int.toString), ident)], String.compare) IDENTICAL Set([str_set(s14, ident)], String.compare), "Testing Int Set: [Map, Str]")
+    val _ = test( s10 CONTAINS s5, "Testing CONTAINS")  
+    val _ = test((s10 INTERSECT s9) CONTAINS  s7, "Testing CONTAINS" )
   in
     ()
   end
+
+
 
 (* Greay *)
 fun greay_tests() =
