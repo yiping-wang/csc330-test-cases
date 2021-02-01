@@ -213,12 +213,9 @@ fun test_lists_2() =
     val _ = test(s6 IN s10, "Testing String_List Sets: [Subset]")
     val _ = test(str_set(s3, str_list_int) = "{[1,2]:[4,5]:[5,6]}", "Testing Int_List Sets: [String-Set]")
     val _ = test(Set([str_set(map_set(s12, String.compare, Int.toString), ident)], String.compare) IDENTICAL Set([str_set(s14, ident)], String.compare), "Testing Int Set: [Map, Str]")
-    val _ = test( s10 CONTAINS s5, "Testing CONTAINS")  
-    val _ = test((s10 INTERSECT s9) CONTAINS  s7, "Testing CONTAINS" )
   in
     ()
   end
-
 
 
 (* Greay *)
@@ -240,6 +237,25 @@ fun greay_tests() =
     end
 
 
+val tests = [
+  ("test_empty()", test_empty),
+  ("test_set_int", test_set_int),
+  ("kush test", test_lists_2)
+   ]
+
+fun run_tests testLst =
+    let
+      fun run_test (name, test) =
+          let
+            val _ = print ("Running test " ^ name ^ "\n")
+          in
+            test()
+          end
+      val _ = print("starting tests...\n")
+    in
+      List.map run_test testLst
+    end
+        
 fun main (prog_name, args) =
     let
       val _ = test_empty()
@@ -256,9 +272,12 @@ fun main (prog_name, args) =
       val _ = test_conversions_2()
       val _ = test_lists_2()
       val _ = greay_tests()
+      val _ = run_tests(tests); 
     in
-      print("Finished testing\n"); exit()
+      print("Finished testing\n");
+      exit()
     end
+
 
                                 
 end
