@@ -42,6 +42,7 @@ val test_tree_delete =
       tt_yw_unique--10 = (emptyTree ++ 7 ++ 5 ++ 6 ++ 3 ++ 4 ++ 2 ++ 8),
       tt_yw_unique--8 = (emptyTree ++ 7 ++ 5 ++ 6 ++ 3 ++ 4 ++ 2 ++ 10),
       tt_yw_unique--5 = (emptyTree ++ 7 ++ 4 ++ 6 ++ 3 ++ 2 ++ 8 ++ 10),
+      (tt_yw_unique--100 handle NotFound => emptyTree) = (emptyTree),
       tt_yw_duplicate--4--4--4 = (emptyTree ++ 8 ++ 3 ++ 3 ++ 2 ++ 2 ++ 6 ++ 7 ++ 5 ++ 5 ++ 10 ++ 10 ++ 10 ++ 11 ++ 12 ++ 12)
     ])
 
