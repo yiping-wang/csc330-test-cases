@@ -109,7 +109,18 @@ val test_check_pattern =
       check_pattern (TupleP [Wildcard,Variable "cat",
                          Variable "pp",TupleP[Variable "tt"],
                          Wildcard,ConstP 3,
-                         ConstructorP("cony",Variable "pp")]) = false
+                         ConstructorP("cony",Variable "pp")]) = false,
+      (* Greay tests*)
+      check_pattern (TupleP [Wildcard,Variable "cat",
+                        Variable "pp",TupleP[Variable "tt"],
+                        Wildcard,ConstP 3,
+                        ConstructorP("cony",Variable "gg")]) = true,
+      check_pattern (TupleP [Wildcard,TupleP[Wildcard],
+                        Wildcard,ConstP 3,
+                        ConstructorP("cony",UnitP)]) = true,
+      check_pattern (TupleP [Wildcard,TupleP[ConstP 3],
+                         Wildcard,ConstP 3,
+                         ConstructorP("cony",ConstP 5)]) = false
     ]);
 
 
