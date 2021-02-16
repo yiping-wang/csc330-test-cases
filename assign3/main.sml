@@ -92,7 +92,10 @@ val test_tree_sum_even =
 
 val test_first_answer =
     ("P1. test first_answer", [
-      first_answer (fn x => if String.size(x) = 3 then SOME x else NONE) ["this", "is", "the", "end", "of", "the", "world"] = "the"
+      first_answer (fn x => if String.size(x) = 3 then SOME x else NONE) ["this", "is", "the", "end", "of", "the", "world"] = "the",
+            (* Greay tests*)
+      first_answer (fn x => if (x < 0) then SOME x else NONE) [1,2,~1,2,1,2] = ~1,
+      (first_answer (fn x => if (x < 0) then SOME x else NONE) [1,2,1,2,1,2] handle NoAnswer => 0) = 0
     ]);
         
 
@@ -101,8 +104,11 @@ val test_all_answers =
     ("P2. all_answers",
      [
        all_answers (fn x => if x = 1 then SOME [x] else NONE) [1,2,1,2,1,2] = NONE,
-       all_answers (fn x => if (x < 0) then NONE else SOME ([1])) [] = SOME []]
-    );
+       all_answers (fn x => if (x < 0) then NONE else SOME ([1])) [] = SOME [],
+            (* Greay tests*)
+       all_answers (fn x => if (x < 0) then NONE else SOME ([x])) [1,2,1,2,1,2] = SOME [1,2,1,2,1,2],
+       all_answers (fn x => if (x < 0) then NONE else SOME ([x])) [1,2,1,2,1,~2] = NONE
+     ]);
 
 val test_check_pattern =
     ("3. check_pattern", [
