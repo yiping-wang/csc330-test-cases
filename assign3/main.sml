@@ -119,8 +119,11 @@ val test_check_pattern =
                         Wildcard,ConstP 3,
                         ConstructorP("cony",UnitP)]) = true,
       check_pattern (TupleP [Wildcard,TupleP[ConstP 3],
-                         Wildcard,ConstP 3,
-                         ConstructorP("cony",ConstP 5)]) = false,
+                        Wildcard,ConstP 3,
+                        ConstructorP("cony",ConstP 5)]) = true,
+      check_pattern (TupleP [Wildcard,TupleP[Variable "cat"],
+                        Wildcard,ConstP 3,
+                        ConstructorP("cony",ConstructorP ("frank", TupleP [Variable "cat"]))]) = false,
     (* Matthew P tests*)
      check_pattern (ConstructorP("hello", TupleP[Variable "tt", TupleP[Variable "tt"]])) = false,
      check_pattern (ConstructorP("hello", TupleP[ConstP 1, TupleP[Wildcard]])) = true,
