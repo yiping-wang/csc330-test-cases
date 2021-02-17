@@ -151,7 +151,8 @@ val test_first_answer =
       first_answer (fn x => if String.size(x) = 3 then SOME x else NONE) ["this", "is", "the", "end", "of", "the", "world"] = "the",
       (* Greay tests*)
       first_answer (fn x => if (x < 0) then SOME x else NONE) [1,2,~1,2,1,2] = ~1,
-      (first_answer (fn x => if (x < 0) then SOME x else NONE) [1,2,1,2,1,2] handle NoAnswer => 0) = 0
+      (first_answer (fn x => if (x < 0) then SOME x else NONE) [1,2,1,2,1,2] handle NoAnswer => 0) = 0,
+      (first_answer (fn x => if (x < 0) then SOME x else NONE) [] handle NoAnswer => 0) = 0
     ]);
 
 
@@ -207,8 +208,14 @@ val test_match =
                           Variable "a",
                           Variable "ab",
                           Variable "abc",
-                          Variable "abcd"]) = SOME [("a",Const 7), ("ab",Const 6), ("abc",Unit), ("abcd",Const 7)
-          ]
+                          Variable "abcd"]) = SOME [("a",Const 7), ("ab",Const 6), ("abc",Unit), ("abcd",Const 7)],
+          (*Greay tests*)
+          match(Const 1, ConstP 1) = SOME [],
+          match(Const 1, ConstP 2) = NONE,
+          match(Constructor ("test", Unit), ConstructorP ("test", UnitP)) = SOME [],
+          match(Constructor ("test1", Unit), ConstructorP ("test2", UnitP)) = NONE,
+          match(Tuple [Const 1, Const 1, Unit], TupleP [Variable "test", Variable "test", Variable "test"]) = SOME [("test", Const 1), ("test", Const 1), ("test", Unit)],
+          match(Tuple [Unit, Const 1, Constructor ("test", Unit)], TupleP [ConstP 1, UnitP, ConstructorP ("test", UnitP)]) = NONE
     ]);
 
 
