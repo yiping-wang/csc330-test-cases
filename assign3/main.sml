@@ -240,6 +240,8 @@ val test_first_match =
               ("abc",Unit),
               ("abcd",Const 7)
            ],
+           (* YW tests *)
+           first_match (Tuple [Unit]) [TupleP [Variable "xxx", Variable "yyy"], TupleP [Variable "aaa"], TupleP [Variable "bbb"]] = SOME [("aaa", Unit)],
            (*Greay tests*)
            first_match Unit [] = NONE
     ]);
