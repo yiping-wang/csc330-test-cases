@@ -22,6 +22,7 @@ val tt_dup_left = emptyTree ++ 15 ++ 25 ++ 9 ++ 11 ++ 12 ++ 13 ++ 9 ++ 10
 val tt_one = emptyTree ++ 15
 val tt_empty = emptyTree
 val tt_neg = emptyTree ++ ~15 ++ ~19 ++ ~25 ++ ~18 ++ ~16 ++ ~10 ++ ~1 ++ ~13
+val tt_mix = emptyTree ++ ~1 ++ ~5 ++ 5 ++ ~9 ++ ~4 ++ ~6 ++ 2 ++ 8 ++ 3 ++ 7
 
 (*
 each of the following pairs is  a set of tests. One per item in the assignment.
@@ -45,7 +46,8 @@ val test_tree_insert =
       (tree_root tt_dup_left) = SOME 15,
       (tree_root tt_one) = SOME 15,
       (tree_root tt_empty) = NONE,
-      (tree_root tt_neg) = SOME ~15
+      (tree_root tt_neg) = SOME ~15,
+      (tree_root tt_mix) = SOME ~1
 
     ])
 
@@ -65,7 +67,8 @@ val test_tree_delete =
       tt_dup_left--25--9--10 = (emptyTree ++ 15 ++ 9 ++ 11 ++ 12 ++ 13),
       tt_one--15 = (emptyTree),
       (tt_empty--15 handle NotFound => emptyTree) = (emptyTree),
-      tt_neg-- ~19 = (emptyTree ++ ~15 ++ ~25 ++ ~18 ++ ~16 ++ ~10 ++ ~1 ++ ~13)
+      tt_neg-- ~19 = (emptyTree ++ ~15 ++ ~25 ++ ~18 ++ ~16 ++ ~10 ++ ~1 ++ ~13),
+      tt_mix-- ~5 -- 5 =(emptyTree ++ ~1 ++ ~6 ++ 3 ++ ~9 ++ ~4 ++ 2 ++ 8 ++ 7)
      ])
 
 val test_tree_height =
@@ -79,7 +82,8 @@ val test_tree_height =
       (tree_height tt_dup_left) = 5,
       (tree_height tt_one) = 1,
       (tree_height tt_empty) = 0,
-      (tree_height tt_neg) = 4
+      (tree_height tt_neg) = 4,
+      (tree_height tt_mix) = 4
     ])
 
 val test_tree_fold =
@@ -94,7 +98,8 @@ val test_tree_fold =
       (tree_fold_pre_order (op +) 0 tt_dup_left) = 104,
       (tree_fold_pre_order (op +) 0 tt_one) = 15,
       (tree_fold_pre_order (op +) 0 tt_empty) = 0,
-      (tree_fold_pre_order (op +) 0 tt_neg) = ~117
+      (tree_fold_pre_order (op +) 0 tt_neg) = ~117,
+      (tree_fold_pre_order (op +) 0 tt_mix) = 0
     ])
 
 val test_tree_max =
@@ -108,7 +113,8 @@ val test_tree_max =
       (tree_max (tt_dup_left--25--15)) = SOME 13,
       (tree_max tt_one) = SOME 15,
       (tree_max tt_empty) = NONE,
-      (tree_max tt_neg) = SOME ~1
+      (tree_max tt_neg) = SOME ~1,
+      (tree_max tt_mix) = SOME 8
     ])
 
 val test_tree_to_list =
@@ -122,7 +128,8 @@ val test_tree_to_list =
       (tree_to_list tt_dup_left) = [15,9,9,11,10,12,13,25],
       (tree_to_list tt_one) = [15],
       (tree_to_list tt_empty) = [],
-      (tree_to_list tt_neg) = [~15,~19,~25,~18,~16,~10,~13,~1]
+      (tree_to_list tt_neg) = [~15,~19,~25,~18,~16,~10,~13,~1],
+      (tree_to_list tt_mix) = [~1,~5,~9,~6,~4,5,2,3,8,7]
     ])
 
 val test_tree_filter =
@@ -135,7 +142,8 @@ val test_tree_filter =
       (tree_filter (fn x => x mod 2 = 0) tt_dup_left) = (emptyTree ++ 12 ++ 10),
       (tree_filter (fn x => x mod 2 = 0) tt_one) = (emptyTree),
       (tree_filter (fn x => x mod 2 = 0) tt_empty) = (emptyTree),
-      (tree_filter (fn x => x mod 2 = 0) tt_neg) = (emptyTree ++ ~16 ++ ~18 ++ ~10)
+      (tree_filter (fn x => x mod 2 = 0) tt_neg) = (emptyTree ++ ~16 ++ ~18 ++ ~10),
+      (tree_filter (fn x => x mod 2 = 0) tt_mix) = (emptyTree ++ ~4 ++ ~6 ++ 2 ++ 8)
     ])
 
 val test_tree_sum_even =
@@ -149,7 +157,8 @@ val test_tree_sum_even =
       (tree_sum_even tt_dup_left) = 22,
       (tree_sum_even tt_one) = 0,
       (tree_sum_even tt_empty) = 0,
-      (tree_sum_even tt_neg) = ~44
+      (tree_sum_even tt_neg) = ~44,
+      (tree_sum_even tt_mix) = 0
     ])
 
 (* test pattern matching *)
