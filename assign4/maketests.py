@@ -19,18 +19,17 @@ list5 = [-100, -200, 300, 400, 600]
 # CONTROL FLOW
 def main():
 
-	make_test_stream_for_n_steps("fibo-stream", fibo_term(10), 15, "ep1")
-	make_test_stream_for_n_steps("fibo-stream", fibo_term(10), 20, "ep2")
-	make_test_stream_for_n_steps("fibo-stream", fibo_term(10), 25, "ep3")
-	make_test_stream_for_n_steps("fibo-stream", fibo_term(10), 30, "ep4")
+	pass
 
 
 # MAKE TEST FUNCTIONS
-def make_test_stream_for_n_steps(fnc_name, ans_list, n, name):
-	"""Prints a test (in racket) for any of the functions that are tested using stream-for-n-steps.
+def make_test_stream_for_n_steps(fnc_name, ans_list, n, name, fnc_name_short=""):
+	"""Prints a test (in racket) for the functions that are tested using stream-for-n-steps.
 	Requires the correct answer to be passed in through ans_list"""
+	if fnc_name_short == "":
+		fnc_name_short=fnc_name
 	print("(check-equal? (stream-for-n-steps " + fnc_name + " " + str(n) + ") '" + 
-		  get_rrl_string(ans_list) + ' "' + fnc_name + " test " + name + '")')
+		  get_rrl_string(ans_list) + ' "' + fnc_name_short + " test " + name + '")')
 
 
 def make_test_add_pointwise_list(l, name):
