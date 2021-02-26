@@ -6,9 +6,9 @@
 (require rackunit)
 
 ;; test create-stream
-(create-stream squares using (lambda (x) (* x x)) 
-          starting at  5
-          with increment 2)
+;(create-stream squares using (lambda (x) (* x x)) 
+;          starting at  5
+;          with increment 2)
 
 (define tests
     (test-suite
@@ -57,6 +57,7 @@
 
 
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 5)) nat-num-stream) 5) '(6 7 8 9 10) "filter nat-num-stream test")
+    (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (integer? (/ i 3))) 5) '(0 3 6 9 12) "filter nat-num-stream test")
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 5)) fibo-stream) 15) '(8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765) "filter fibo-stream test ep1")    
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 10)) palyndromic-numbers) 11) '(11 22 33 44 55 66 77 88 99 101 111) "filter palyndromic-numbers test ep1")    
 
