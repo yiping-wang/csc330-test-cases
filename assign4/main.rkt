@@ -24,22 +24,22 @@
 	(check-equal? (add-pointwise '(-1 -2 -3 -4 -5 -6) '(-2 10 15 20)) (list -3 8 12 16 -5 -6) "add-pointwise test ep6")
    
 
-   	(check-equal? (add-pointwise-lists '((1 1) (2 2 2 2) (3) ())) '(6 3 2 2) "add-pointwise-list test"))
-   	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6)) '(0 5 10 15 20 0 7 8 9 10) "add-pointwise-list test ep1"))
-	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-100 -200 300 400 600)) '(-102 -185 325 435 620 0 7 8 9 10) "add-pointwise-list test ep2"))
-	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6)) '(-2 -4 -6 -8 -10 -12 7 8 9 10) "add-pointwise-list test ep3"))
-	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10)) '(1 2 3 4 5 6 7 8 9 10) "add-pointwise-list test ep4"))
-	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-2 10 15 20) (-100 -200 300 400 600)) '(-101 -188 318 424 605 6 7 8 9 10) "add-pointwise-list test ep5"))
-	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-2 10 15 20)) '(-4 20 30 40 0 0 7 8 9 10) "add-pointwise-list test ep6"))
+   	(check-equal? (add-pointwise-lists '((1 1) (2 2 2 2) (3) ())) '(6 3 2 2) "add-pointwise-list test")
+   	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6))) '(0 5 10 15 20 0 7 8 9 10) "add-pointwise-list test ep1")
+	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-100 -200 300 400 600))) '(-102 -185 325 435 620 0 7 8 9 10) "add-pointwise-list test ep2")
+	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6))) '(-2 -4 -6 -8 -10 -12 7 8 9 10) "add-pointwise-list test ep3")
+	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10))) '(1 2 3 4 5 6 7 8 9 10) "add-pointwise-list test ep4")
+	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-2 10 15 20) (-100 -200 300 400 600))) '(-101 -188 318 424 605 6 7 8 9 10) "add-pointwise-list test ep5")
+	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-2 10 15 20))) '(-4 20 30 40 0 0 7 8 9 10) "add-pointwise-list test ep6")
 
 
-	(check-equal? (add-pointwise-lists-2 '((1 1) (2 2 2 2) (3) ())) '(6 3 2 2) "add-pointwise-list test"))
-   	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6)) '(0 5 10 15 20 0 7 8 9 10) "add-pointwise-list test ep1"))
-	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-100 -200 300 400 600)) '(-102 -185 325 435 620 0 7 8 9 10) "add-pointwise-list test ep2"))
-	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6)) '(-2 -4 -6 -8 -10 -12 7 8 9 10) "add-pointwise-list test ep3"))
-	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10)) '(1 2 3 4 5 6 7 8 9 10) "add-pointwise-list test ep4"))
-	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-2 10 15 20) (-100 -200 300 400 600)) '(-101 -188 318 424 605 6 7 8 9 10) "add-pointwise-list test ep5"))
-	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-2 10 15 20)) '(-4 20 30 40 0 0 7 8 9 10) "add-pointwise-list test ep6"))
+	(check-equal? (add-pointwise-lists-2 '((1 1) (2 2 2 2) (3) ())) '(6 3 2 2) "add-pointwise-list test")
+   	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6))) '(0 5 10 15 20 0 7 8 9 10) "add-pointwise-list test ep1")
+	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-100 -200 300 400 600))) '(-102 -185 325 435 620 0 7 8 9 10) "add-pointwise-list test ep2")
+	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6) (-1 -2 -3 -4 -5 -6))) '(-2 -4 -6 -8 -10 -12 7 8 9 10) "add-pointwise-list test ep3")
+	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10))) '(1 2 3 4 5 6 7 8 9 10) "add-pointwise-list test ep4")
+	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-2 10 15 20) (-100 -200 300 400 600))) '(-101 -188 318 424 605 6 7 8 9 10) "add-pointwise-list test ep5")
+	(check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-2 10 15 20))) '(-4 20 30 40 0 0 7 8 9 10) "add-pointwise-list test ep6")
 
 
    	(check-equal? (stream-for-n-steps nat-num-stream 10) '(0 1 2 3 4 5 6 7 8 9) "stream-for-n-steps test")
@@ -57,7 +57,7 @@
 
 
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 5)) nat-num-stream) 5) '(6 7 8 9 10) "filter nat-num-stream test")
-    (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (integer? (/ i 3))) 5) '(0 3 6 9 12) "filter nat-num-stream test")
+    (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (integer? (/ i 3))) nat-num-stream) 5) '(0 3 6 9 12) "filter nat-num-stream test")
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 5)) fibo-stream) 15) '(8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765) "filter fibo-stream test ep1")    
     (check-equal? (stream-for-n-steps (filter-stream (lambda (i) (> i 10)) palyndromic-numbers) 11) '(11 22 33 44 55 66 77 88 99 101 111) "filter palyndromic-numbers test ep1")    
 
