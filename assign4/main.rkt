@@ -20,25 +20,11 @@
                  (list 5 4 3)
                  "add-pointwise test")
    ;(Greay tests)
-   (check-equal? (add-pointwise '() '())
-                 null
-                 "add-pointwise test")
-   
-   (check-equal? (add-pointwise '(1 2) '(4 2 3))
-                 (list 5 4 3)
-                 "add-pointwise test")
-
-   (check-equal? (add-pointwise '(1 2) '())
-                 (list 1 2)
-                 "add-pointwise test")
-
-   (check-equal? (add-pointwise '() '(1 2))
-                 (list 1 2)
-                 "add-pointwise test")
-   
-   (check-equal? (add-pointwise '(3 4) '(1 2))
-                 (list 4 6)
-                 "add-pointwise test")
+   (check-equal? (add-pointwise '() '()) null "add-pointwise test")
+   (check-equal? (add-pointwise '(1 2) '(4 2 3))(list 5 4 3) "add-pointwise test")
+   (check-equal? (add-pointwise '(1 2) '())(list 1 2) "add-pointwise test")
+   (check-equal? (add-pointwise '() '(1 2)) (list 1 2) "add-pointwise test")
+   (check-equal? (add-pointwise '(3 4) '(1 2)(list 4 6) "add-pointwise test")
    
    ;-------------------add-pointwise-lists tests------------------------------
 
@@ -88,10 +74,8 @@
    (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1)))
                  (cons 4 1)
                  "vector-assoc test")
-   
-   (check-equal? (vector-assoc 4 (vector #f #f #f #f #f #f))
-                 #f
-                 "vector-assoc test")
+   ;(Greay tests)
+   (check-equal? (vector-assoc 4 (vector #f #f #f #f #f #f)) #f "vector-assoc test")
 
   ;--------------------------cached-assoc tests------------------------------
    
@@ -102,14 +86,6 @@
            (cache 3))
     (cons 3 4)
     "cached-assoc test")
-
-   (check-equal?
-    (let
-        [(cache (cached-assoc  (list (cons 1 2) (cons 3 4) (cons 5 6) (cons 7 8) (cons 9 10)) 3))]
-           (cache )
-    (cons 3 4)
-    "cached-assoc test")
-
    
    ))
 
