@@ -5,9 +5,7 @@
 
 #|Test project to define some tests outside the scope of main. There is a slew of test options
 in require test-engine/racket-tests that cannot work in tandem with rackunit. One such test will
-check for the proper error. feel free to play around with this for additional testing - Greay
-
-Note: this can be automated using just main.rkt, enable (require "tests.rkt") in main.rkt for this feature|#
+check for the proper error. feel free to play around with this for additional testing - Greay|#
 
 
 (create-stream squares using (lambda (x) (* x x)) 
@@ -49,6 +47,12 @@ Note: this can be automated using just main.rkt, enable (require "tests.rkt") in
 
 ;--------------------------cached-assoc tests------------------------------
    
-
+(print "-----------tests.rkt-----------")
+(newline)
+(newline)
 (test)
+(newline)
+(newline)
+(print "-----------main.rkt------------")
+(newline)
 (newline)
