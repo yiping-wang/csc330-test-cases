@@ -2,6 +2,8 @@
 ;;
 ;;
 (require "functions.rkt")
+;if using test.rkt as well, uncomment below and make sure tests.rkt is in the same directory
+;(require "tests.rkt")
 
 (require rackunit)
 
