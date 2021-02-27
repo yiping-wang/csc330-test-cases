@@ -21,10 +21,10 @@
                  "add-pointwise test")
    ;(Greay tests)
    (check-equal? (add-pointwise '() '()) null "add-pointwise test")
-   (check-equal? (add-pointwise '(1 2) '(4 2 3))(list 5 4 3) "add-pointwise test")
-   (check-equal? (add-pointwise '(1 2) '())(list 1 2) "add-pointwise test")
+   (check-equal? (add-pointwise '(1 2) '(4 2 3)) (list 5 4 3) "add-pointwise test")
+   (check-equal? (add-pointwise '(1 2) '()) (list 1 2) "add-pointwise test")
    (check-equal? (add-pointwise '() '(1 2)) (list 1 2) "add-pointwise test")
-   (check-equal? (add-pointwise '(3 4) '(1 2)(list 4 6) "add-pointwise test")
+   (check-equal? (add-pointwise '(3 4) '(1 2)) (list 4 6) "add-pointwise test")
    
    ;-------------------add-pointwise-lists tests------------------------------
 
