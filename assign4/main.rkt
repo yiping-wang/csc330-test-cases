@@ -36,10 +36,10 @@
    (check-equal? (add-pointwise '(0 5 10 15 20) '(-2 10 15 20)) (list -2 15 25 35 20) "add-pointwise test ep5")
    (check-equal? (add-pointwise '(-1 -2 -3 -4 -5 -6) '(-2 10 15 20)) (list -3 8 12 16 -5 -6) "add-pointwise test ep6")
    
-   ; (vicky tests) NOTE: these can't check your message
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise "hi" '(1 2))) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise '() 1)) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise 1 2)) 'ok "add-pointwise test")
+   ; (vicky tests)
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise "hi" '(1 2))) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise '() 1)) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise 1 2)) "illegal parameter" "add-pointwise test")
 
    ;-------------------add-pointwise-lists tests------------------------------
 
@@ -56,9 +56,9 @@
    ; (vicky tests)
    (check-equal? (add-pointwise-lists '(())) '() "add-pointwise-list test")
    (check-equal? (add-pointwise-lists '()) '() "add-pointwise-list test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '((1 2) () 3))) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '("hi" (1 2) (-1 -2)))) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '("hi"))) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists '((1 2) () 3))) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists '("hi" (1 2) (-1 -2)))) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists '("hi"))) "illegal parameter" "add-pointwise test")
 
    ;-------------------add-pointwise-lists-2 tests------------------------------
    
@@ -75,9 +75,9 @@
    ; (vicky tests)
    (check-equal? (add-pointwise-lists-2 '(())) '() "add-pointwise-list test")
    (check-equal? (add-pointwise-lists-2 '()) '() "add-pointwise-list test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '((1 2) () 3))) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '("hi" (1 2) (-1 -2)))) 'ok "add-pointwise test")
-   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '("hi"))) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists-2 '((1 2) () 3))) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists-2 '("hi" (1 2) (-1 -2)))) "illegal parameter" "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists-2 '("hi"))) "illegal parameter" "add-pointwise test")
 
    ;-------------------stream-for-n-steps tests------------------------------
 
