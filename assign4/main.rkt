@@ -57,6 +57,13 @@
 	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-2 10 15 20) (-100 -200 300 400 600))) '(-101 -188 318 424 605 6 7 8 9 10) "add-pointwise-list test ep5")
 	(check-equal? (add-pointwise-lists '((1 2 3 4 5 6 7 8 9 10) (-1 -2 -3 -4 -5 -6) (-2 10 15 20) (-2 10 15 20))) '(-4 20 30 40 0 0 7 8 9 10) "add-pointwise-list test ep6")
 
+   ; (vicky tests)
+   (check-equal? (add-pointwise-lists '(())) '() "add-pointwise-list test")
+   (check-equal? (add-pointwise-lists '()) '() "add-pointwise-list test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '((1 2) () 3))) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '("hi" (1 2) (-1 -2)))) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists '("hi"))) 'ok "add-pointwise test")
+
    ;-------------------add-pointwise-lists-2 tests------------------------------
    
    (check-equal? (add-pointwise-lists-2 '((1 1) (2 2 2 2) (3) ()))
