@@ -78,7 +78,7 @@
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '((1 2) () 3))) 'ok "add-pointwise test")
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '("hi" (1 2) (-1 -2)))) 'ok "add-pointwise test")
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise-lists-2 '("hi"))) 'ok "add-pointwise test")
-   
+
    ;-------------------stream-for-n-steps tests------------------------------
 
   (check-equal? (stream-for-n-steps nat-num-stream 10) '(0 1 2 3 4 5 6 7 8 9) "stream-for-n-steps test")
@@ -89,6 +89,11 @@
   (check-equal? (stream-for-n-steps nat-num-stream 25) '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24) "nat-num-stream test ep3")
   (check-equal? (stream-for-n-steps nat-num-stream 30) '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29) "nat-num-stream test ep4")
 
+  ; (vicky tests)
+  (check-equal? (stream-for-n-steps nat-num-stream 2) '(0 1) "fibo-stream test")
+  (check-equal? (stream-for-n-steps nat-num-stream 1) '(0) "fibo-stream test")
+  (check-equal? (stream-for-n-steps nat-num-stream 0) '() "fibo-stream test")
+
   ;--------------------------fibo-stream tests------------------------------
   
   (check-equal? (stream-for-n-steps fibo-stream 10) '(0 1 1 2 3 5 8 13 21 34) "fibo-stream test")
@@ -98,6 +103,11 @@
   (check-equal? (stream-for-n-steps fibo-stream 20) '(0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181) "fibo-stream test ep2")
   (check-equal? (stream-for-n-steps fibo-stream 25) '(0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368) "fibo-stream test ep3")
   (check-equal? (stream-for-n-steps fibo-stream 30) '(0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229) "fibo-stream test ep4")
+
+  ; (vicky tests)
+  (check-equal? (stream-for-n-steps fibo-stream 2) '(0 1) "fibo-stream test")
+  (check-equal? (stream-for-n-steps fibo-stream 1) '(0) "fibo-stream test")
+  (check-equal? (stream-for-n-steps fibo-stream 0) '() "fibo-stream test")
 
   ;--------------------------filter-stream tests------------------------------
   
