@@ -38,6 +38,11 @@
 	(check-equal? (add-pointwise '(0 5 10 15 20) '(-2 10 15 20)) (list -2 15 25 35 20) "add-pointwise test ep5")
 	(check-equal? (add-pointwise '(-1 -2 -3 -4 -5 -6) '(-2 10 15 20)) (list -3 8 12 16 -5 -6) "add-pointwise test ep6")
    
+   ; (vicky tests) NOTE: these can't check your message though
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise "hi" '(1 2))) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise '() 1)) 'ok "add-pointwise test")
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise 1 2)) 'ok "add-pointwise test")
+
    ;-------------------add-pointwise-lists tests------------------------------
 
    (check-equal? (add-pointwise-lists '((1 1) (2 2 2 2) (3) ()))
