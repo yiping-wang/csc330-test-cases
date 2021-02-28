@@ -36,7 +36,7 @@
    (check-equal? (add-pointwise '(0 5 10 15 20) '(-2 10 15 20)) (list -2 15 25 35 20) "add-pointwise test ep5")
    (check-equal? (add-pointwise '(-1 -2 -3 -4 -5 -6) '(-2 10 15 20)) (list -3 8 12 16 -5 -6) "add-pointwise test ep6")
    
-   ; (vicky tests) NOTE: these can't check your message though
+   ; (vicky tests) NOTE: these can't check your message
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise "hi" '(1 2))) 'ok "add-pointwise test")
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise '() 1)) 'ok "add-pointwise test")
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) 'ok)]) (add-pointwise 1 2)) 'ok "add-pointwise test")
@@ -90,9 +90,8 @@
   (check-equal? (stream-for-n-steps nat-num-stream 30) '(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29) "nat-num-stream test ep4")
 
   ; (vicky tests)
-  (check-equal? (stream-for-n-steps nat-num-stream 2) '(0 1) "fibo-stream test")
-  (check-equal? (stream-for-n-steps nat-num-stream 1) '(0) "fibo-stream test")
-  (check-equal? (stream-for-n-steps nat-num-stream 0) '() "fibo-stream test")
+  (check-equal? (stream-for-n-steps nat-num-stream 1) '(0) "nat-num-stream test")
+  (check-equal? (stream-for-n-steps nat-num-stream 0) '() "nat-num-stream test")
 
   ;--------------------------fibo-stream tests------------------------------
   
