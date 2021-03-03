@@ -72,9 +72,15 @@
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists '("hi" (1 2) (-1 -2)))) "illegal parameter" "add-pointwise test")
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists '("hi"))) "illegal parameter" "add-pointwise test")
 
+   ; (turtle tests)
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists 3)) "illegal parameter" "add-pointwise test")
+
    ;-------------------add-pointwise-lists-2 tests------------------------------
    
    (check-equal? (add-pointwise-lists-2 '((1 1) (2 2 2 2) (3) ())) '(6 3 2 2) "add-pointwise-list test")
+
+   ; (turtle tests)
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise-lists-2 3)) "illegal parameter" "add-pointwise test")
                  
    ; (epwr tests) 
    (check-equal? (add-pointwise-lists-2 '((1 2 3 4 5 6 7 8 9 10) (0 5 10 15 20) (-1 -2 -3 -4 -5 -6))) '(0 5 10 15 20 0 7 8 9 10) "add-pointwise-list test ep1")
