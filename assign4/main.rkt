@@ -13,6 +13,9 @@
           starting at  5
           with increment 2)
 
+; (vicky test)
+(create-stream div2 using (lambda (x) (/ x 2)) starting at 4 with increment -2)
+
 (define tests
   (test-suite
    "Sample tests for Assignment 4"
@@ -131,12 +134,21 @@
   
   (check-equal? (stream-for-n-steps squares 5) '(25 49 81 121 169) "stream defined using a macro. only tests is return value")
 
+  ; (vicky - create-stream test)
+  (check-equal? (stream-for-n-steps div2 6) '(2 1 0 -1 -2 -3) "stream defined using a macro. only tests is return value")
+
   ;--------------------------vector-assoc tests------------------------------
    
   (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1))) (cons 4 1) "vector-assoc test")
    
   ;(Greay tests)
   (check-equal? (vector-assoc 4 (vector #f #f #f #f #f #f)) #f "vector-assoc test")
+
+  ; (vicky tests)
+  (check-equal? (vector-assoc 5 (vector 5 (cons 2 1))) #f "vector-assoc test")
+  (check-equal? (vector-assoc 2 (vector (vector (cons 2 1)) (cons 2 1))) (cons 2 1) "vector-assoc test")
+  (check-equal? (vector-assoc 2 (vector (vector (cons 2 1)) (cons 4 1))) #f "vector-assoc test")
+  (check-equal? (vector-assoc 4 (vector)) #f "vector-assoc test")
 
   ;--------------------------cached-assoc tests------------------------------
    
