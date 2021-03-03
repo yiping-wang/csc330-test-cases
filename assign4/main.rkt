@@ -26,6 +26,9 @@
    (check-equal? (add-pointwise '(1 2) '()) (list 1 2) "add-pointwise test")
    (check-equal? (add-pointwise '() '(1 2)) (list 1 2) "add-pointwise test")
    (check-equal? (add-pointwise '(3 4) '(1 2)) (list 4 6) "add-pointwise test")
+
+   ;(turtle tests)
+   (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise '(1.2 1) '(1 2))) "illegal parameter" "add-pointwise test")
    
    ; (epwr tests)
    (check-equal? (add-pointwise '(1 2 3) '(4 2)) (list 5 4 3) "add-pointwise test")
