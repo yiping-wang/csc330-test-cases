@@ -13,6 +13,14 @@
           starting at  5
           with increment 2)
 
+;; test create-stream
+(define turtle-stream-counter-start 0)
+(define turtle-stream-counter-inc 0)
+(create-stream turtle-squares using (lambda (x) (* x x)) 
+          starting at  (begin (set! turtle-stream-counter-start (+ turtle-stream-counter-start 1)) 5)
+          with increment (begin (set! turtle-stream-counter-inc (+ turtle-stream-counter-inc 1)) 2))
+
+
 ; (vicky test)
 (create-stream div2 using (lambda (x) (/ x 2)) starting at 4 with increment -2)
 
@@ -29,6 +37,7 @@
    (check-equal? (add-pointwise '(1 2) '()) (list 1 2) "add-pointwise test")
    (check-equal? (add-pointwise '() '(1 2)) (list 1 2) "add-pointwise test")
    (check-equal? (add-pointwise '(3 4) '(1 2)) (list 4 6) "add-pointwise test")
+   (check-equal? (add-pointwise '(3.4 4) '(1 2.2)) (list 4.4 6.2) "add-pointwise test real")
 
    ;(turtle tests)
    (check-equal? (with-handlers ([exn:fail? (lambda (exn) (exn-message exn))]) (add-pointwise '(1.2 "racket") '(1 2))) "illegal parameter" "add-pointwise test")
@@ -133,6 +142,14 @@
   ;-------------------------------squares tests------------------------------
   
   (check-equal? (stream-for-n-steps squares 5) '(25 49 81 121 169) "stream defined using a macro. only tests is return value")
+
+  ; (turtle)
+  (check-equal? (begin (turtle-squares) turtle-stream-counter-start) 1 "start should be called only once")
+  (set! turtle-stream-counter-start 0)
+  (check-equal? (begin (stream-for-n-steps turtle-squares 5) turtle-stream-counter-inc) 4 "should inc 4 times")
+  (check-equal? turtle-stream-counter-start 1 "start should be called only once")
+  (set! turtle-stream-counter-start 0)
+  (set! turtle-stream-counter-inc 0)
 
   ; (vicky - create-stream test)
   (check-equal? (stream-for-n-steps div2 6) '(2 1 0 -1 -2 -3) "stream defined using a macro. only tests is return value")
