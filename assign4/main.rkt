@@ -146,9 +146,9 @@
 
   ; (vicky tests)
   (check-equal? (vector-assoc 5 (vector 5 (cons 2 1))) #f "vector-assoc test")
-  (check-equal? (vector-assoc 2 (vector (vector (cons 2 1)) (cons 2 1))) (cons 2 1) "vector-assoc test")
+  (check-equal? (vector-assoc -2 (vector (vector (cons -2 1)) (cons -2 1))) (cons -2 1) "vector-assoc test")
   (check-equal? (vector-assoc 2 (vector (vector (cons 2 1)) (cons 4 1))) #f "vector-assoc test")
-  (check-equal? (vector-assoc 4 (vector)) #f "vector-assoc test")
+  (check-equal? (vector-assoc 0 (vector)) #f "vector-assoc test")
 
   ;--------------------------cached-assoc tests------------------------------
    
