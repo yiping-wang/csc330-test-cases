@@ -156,7 +156,9 @@
 
   ; (vicky - create-stream test)
   (check-equal? (stream-for-n-steps div2 6) '(2 1 0 -1 -2 -3) "stream defined using a macro. only tests is return value")
-
+  
+  ; (Greay test)
+  (check-equal? (stream-for-n-steps squares 30) '(25 49 81 121 169 225 289 361 441 529 625 729 841 961 1089 1225 1369 1521 1681 1849 2025 2209 2401 2601 2809 3025 3249 3481 3721 3969) "stream defined using a macro. only tests is return value")
   ;--------------------------vector-assoc tests------------------------------
    
   (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 3 1) (cons 4 1) (cons 5 1))) (cons 4 1) "vector-assoc test")
