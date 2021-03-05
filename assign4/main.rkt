@@ -163,7 +163,8 @@
    
   ;(Greay tests)
   (check-equal? (vector-assoc 4 (vector #f #f #f #f #f #f)) #f "vector-assoc test")
-
+  (check-equal? (vector-assoc 4 (vector (cons 2 1) (cons 4 9) (cons 4 1) (cons 5 1))) (cons 4 9) "vector-assoc test")
+ 
   ; (vicky tests)
   (check-equal? (vector-assoc 5 (vector 5 (cons 2 1))) #f "vector-assoc test")
   (check-equal? (vector-assoc -2 (vector (vector (cons -2 1)) (cons -2 1))) (cons -2 1) "vector-assoc test")
