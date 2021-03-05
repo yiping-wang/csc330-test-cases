@@ -172,6 +172,27 @@
 
   ;--------------------------cached-assoc tests------------------------------
    
+  (
+    let [(cache (cached-assoc  (list (cons 1 2) (cons 3 4) (cons 5 6) (cons 8 7) (cons 9 4)) 3) )]
+    (check-equal? (cache 1) (cons 1 2)  "cached-assoc test3")
+    (check-equal? (cache 2) #f  "cached-assoc test2")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test1")
+    (check-equal? (cache 1) (cons 1 2)  "cached-assoc test4")
+    (check-equal? (cache 5) (cons 5 6)  "cached-assoc test5")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test6")
+    (check-equal? (cache 1) (cons 1 2)  "cached-assoc test3")
+    (check-equal? (cache 2) #f  "cached-assoc test2")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test1")
+    (check-equal? (cache 9) (cons 9 4)  "cached-assoc test4")
+    (check-equal? (cache 8) (cons 8 7)  "cached-assoc test5")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test6")
+    (check-equal? (cache 1) (cons 1 2)  "cached-assoc test3")
+    (check-equal? (cache 2) #f  "cached-assoc test2")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test1")
+    (check-equal? (cache 9) (cons 9 4)  "cached-assoc test4")
+    (check-equal? (cache 1) (cons 1 2)  "cached-assoc test5")
+    (check-equal? (cache 3) (cons 3 4)  "cached-assoc test6")
+  )
   ;; note that the following test tests functionality but not performance
   (check-equal? (let [(cache (cached-assoc  (list (cons 1 2) (cons 3 4)) 3) )] (cache 3)) (cons 3 4)  "cached-assoc test")
   
