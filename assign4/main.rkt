@@ -195,6 +195,8 @@
   )
   ;; note that the following test tests functionality but not performance
   (check-equal? (let [(cache (cached-assoc  (list (cons 1 2) (cons 3 4)) 3) )] (cache 3)) (cons 3 4)  "cached-assoc test")
+  ;(Greay test)
+  (check-equal? (let [(cache (cached-assoc  (list (cons 1 2) (cons 3 4)) 0) )] (cache 3)) (cons 3 4)  "cached-assoc test")
   
   ))
 
